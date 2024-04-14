@@ -7,9 +7,9 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { auth } from "../../../Firebase";
+import { auth, provider } from "../../../Firebase";
 import React, { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import Link from "next/link";
 const Signup = () => {
   const [userData, setUserData] = useState({
@@ -25,6 +25,13 @@ const Signup = () => {
     );
   };
 
+  const handleLoginWithGoogle = async () => {
+    try {
+      signInWithPopup(auth, provider).then((authUser) => {});
+    } catch (error) {
+      console.error("Google sign-in error:", error);
+    }
+  };
   return (
     <Box
       sx={{
@@ -41,7 +48,9 @@ const Signup = () => {
       <Paper
         sx={{
           height: "fit-content",
-          p: "2rem",
+          px: "2rem",
+          py: "3rem",
+
           width: "30rem",
         }}
       >
@@ -81,7 +90,10 @@ const Signup = () => {
             conditions.
           </Typography>
           <Button variant="contained" onClick={() => handleSignup()}>
-            Sign Up
+            <Typography variant="button">Sign Up</Typography>
+          </Button>
+          <Button variant="contained" onClick={() => handleLoginWithGoogle()}>
+            <Typography variant="button">Sign In With google</Typography>
           </Button>
         </FormControl>
         <Typography mt={"1.5rem"} variant="body2">

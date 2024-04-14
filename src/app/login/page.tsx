@@ -11,13 +11,13 @@ import { auth } from "../../../Firebase";
 import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
-const Signup = () => {
+const Login = () => {
   const [userData, setUserData] = useState({
     email: "",
     pass: "",
   });
 
-  const handleSignup = async () => {
+  const handleLogin = async () => {
     createUserWithEmailAndPassword(auth, userData.email, userData.pass).then(
       (authUser) => {
         console.log(authUser);
@@ -42,6 +42,7 @@ const Signup = () => {
         sx={{
           height: "fit-content",
           p: "2rem",
+          py: "3rem",
           width: "30rem",
         }}
       >
@@ -75,8 +76,8 @@ const Signup = () => {
               setUserData((pre) => ({ ...pre, pass: e.target.value }))
             }
           />
-          <Button variant="contained" onClick={() => handleSignup()}>
-            Login
+          <Button variant="contained" onClick={() => handleLogin()}>
+            <Typography variant="button">Login</Typography>
           </Button>
         </FormControl>
         <Typography mt={"1.5rem"} variant="body2">
@@ -90,4 +91,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default Login;
