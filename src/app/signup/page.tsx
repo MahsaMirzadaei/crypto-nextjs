@@ -36,7 +36,7 @@ const Signup = () => {
       }}
     >
       <Typography variant="h4" fontWeight={"bold"}>
-        Log in to Crypto
+        Sign Up to Crypto
       </Typography>
       <Paper
         sx={{
@@ -75,15 +75,17 @@ const Signup = () => {
               setUserData((pre) => ({ ...pre, pass: e.target.value }))
             }
           />
+          <Typography mb={"1rem"} variant="body2">
+            By clicking next, I hereby acknowledge that I agree to the terms of
+            the Crypto.com Privacy Notice and Crypto.com Exchange Terms &
+            conditions.
+          </Typography>
           <Button variant="contained" onClick={() => handleSignup()}>
-            Login
+            Sign Up
           </Button>
         </FormControl>
         <Typography mt={"1.5rem"} variant="body2">
-          Forgot your password?
-        </Typography>
-        <Typography mt={".5rem"} variant="body2">
-          Don't have an account? <Link href="/signup">Sign up now</Link>
+          Already have an account? <Link href="/login">Log In</Link>
         </Typography>
       </Paper>
     </Box>

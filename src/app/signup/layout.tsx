@@ -17,7 +17,7 @@ export default function LoginLayout({
       }}
     >
       {" "}
-      login layout
+      sign up layout
       {children}
     </Box>
   );
