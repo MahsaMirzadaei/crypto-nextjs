@@ -32,6 +32,14 @@ const Signup = () => {
       console.error("Google sign-in error:", error);
     }
   };
+
+  const getuser = async () => {
+    await fetch("https://crypto-fb427-default-rtdb.firebaseio.com/users").then(
+      (res) => {
+        console.log(res);
+      }
+    );
+  };
   return (
     <Box
       sx={{
@@ -100,6 +108,8 @@ const Signup = () => {
           Already have an account? <Link href="/login">Log In</Link>
         </Typography>
       </Paper>
+
+      <Button onClick={() => getuser()}>get user</Button>
     </Box>
   );
 };
